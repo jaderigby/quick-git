@@ -30,6 +30,6 @@ def run_command_list(LIST):
 	import subprocess
 	str = ''
 	for item in LIST:
-		str += ('' + item)
+		str += (' ' + item)
 	print('\n============== Running Command: {}\n'.format(str))
 	subprocess.call(LIST)
