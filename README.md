@@ -1,6 +1,6 @@
 # quick-git #
 
-## Install ##
+## Setup ##
 
 Inside your `Documents` folder, if you don't already have one, create a directory called `bash-tools`.  Then, clone the quick-git repo into this directory.  Inside the `bash-tools` directory, if you don't already have one, create a `.bashrc` file.  Open the `.bashrc` file, and add the following:
 
