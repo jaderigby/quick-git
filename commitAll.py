@@ -1,13 +1,12 @@
 import messages as msg
-import subprocess
+import helpers
 
 # settings = helpers.get_settings()
 
 def execute():
-    subprocess.call(['git', 'add', '-A'])
-    subprocess.call(['git', 'status'])
+    helpers.run_command('git add -A')
+    helpers.run_command('git status')
     commitMessage = raw_input("Commit Message: ")
-    subprocess.call(['git', 'commit', '-m', commitMessage])
-    subprocess.call(['git', 'push'])
-    print("")
-    print("Process Completed")
+    helpers.run_command_list(['git', 'commit', '-m', commitMessage])
+    helpers.run_command('git push')
+    msg.done()

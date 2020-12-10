@@ -25,3 +25,11 @@ def run_command(CMD):
 	import subprocess
 	print('\n============== Running Command: {}\n'.format(CMD))
 	subprocess.call(CMD, shell=True)
+
+def run_command_list(LIST):
+	import subprocess
+	str = ''
+	for item in LIST:
+		str += ('' + item)
+	print('\n============== Running Command: {}\n'.format(str))
+	subprocess.call(LIST)

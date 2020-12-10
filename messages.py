@@ -8,3 +8,6 @@ def statusMessage():
 [ qit feature ]			creates a new feature branch
 [ qit remove ]			removes/deletes both local and remote branch
 '''
+def done():
+	'''
+[ Process Completed ]'''
