@@ -8,14 +8,10 @@ Inside your `Documents` folder, if you don't already have one, create a director
 alias qit="python ~/Documents/bash-tools/quick-git/actions.py"
 ```
 
-Finally, you will need to create a profile.py file inside the utility's "profiles" directory (`bash-tools/quick-git/profiles`).  Add the following contents to the file, and save it:
+Finally, run the following command:
 
 ```
-{
-	"settings" : {
-
-	}
-}
+cd ~/Documents/bash-tools/quick-git && mkdir profiles && cd profiles && echo '{\n\t"settings" : {\n\n\t}\n}' >> profile.py
 ```
 
 ## Usage ##
