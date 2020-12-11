@@ -8,6 +8,16 @@ Inside your `Documents` folder, if you don't already have one, create a director
 alias qit="python ~/Documents/bash-tools/quick-git/actions.py"
 ```
 
+Finally, you will need to create a profile.py file inside the utility's "profiles" directory (`bash-tools/quick-git/profiles`).  Add the following contents to the file, and save it:
+
+```
+{
+	"settings" : {
+
+	}
+}
+```
+
 ## Usage ##
 
 - `qit` = get a list of commands
