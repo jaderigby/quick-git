@@ -5,6 +5,7 @@ import testModule
 import Feature
 import Remove
 import Branch
+import Diff
 # new imports start here
 
 # settings = helpers.get_settings()
@@ -34,4 +35,7 @@ elif action == "remove":
 
 elif action == "branch":
     Branch.execute()
+
+elif action == "diff":
+    Diff.execute()
 # new actions start here

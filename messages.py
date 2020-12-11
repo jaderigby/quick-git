@@ -10,5 +10,6 @@ def statusMessage():
 [ qit remove ]			removes/deletes both local and remote branch
 '''
 def done():
-	'''
-[ Process Completed ]'''
+	print('''
+[ Process Completed ]
+''')
