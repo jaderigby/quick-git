@@ -25,5 +25,5 @@ cd ~/Documents/bash-tools/quick-git && mkdir profiles && cd profiles && echo '{\
 
 ```
 cd ~/Documents/bash-tools/quick-git && mkdir profiles
-touch profile.py && echo profile.py >> '{\n\t"settings" : {\n\t\t"differ" : ""\n\t}\n}'
+touch ~/Documents/bash-tools/quick-git/profiles/profile.py && echo -e '{\n\t"settings" : {\n\t\t"differ" : ""\n\t}\n}' >> ~/Documents/bash-tools/quick-git/profiles/profile.py
 ```
