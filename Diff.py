@@ -9,10 +9,7 @@ def execute():
     selection = helpers.user_selection('Select file to diff: ', listingList)
     if isinstance(selection, int):
         option = listingList[selection - 1]
-        optionList = option.split('/')
-        optionList.pop(0) 
-        optionPath = '/'.join(optionList)
-        helpers.run_command('git difftool {} {}'.format(optionPath, settings['differ']))
+        helpers.run_command('git difftool {} {}'.format(option, settings['differ']))
     elif selection is 'exit':
         print('\nExiting ...\n')
         msg.done()
