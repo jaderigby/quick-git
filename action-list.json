@@ -1,0 +1,30 @@
+{
+     "toolName" : "quick-git"
+    ,"alias" : "qit"
+    ,"actions" : [
+        {
+                "name" : "all"
+            ,"description" : "add, commit, and push all changes"
+        }
+        ,{
+            "name" : "dfile"
+            ,"description" : "diff a specific file against HEAD"
+        }
+        ,{
+            "name" : "branch"
+            ,"description" : "get a list of branches; select branch to switch to"
+        }
+        ,{
+            "name" : "feature"
+            ,"description" : "creates a new feature branch"
+        }
+        ,{
+            "name" : "remove"
+            ,"description" : "removes/deletes both local and remote branch"
+        }
+        ,{
+            "name" : "diff"
+            ,"description" : "gives you a selectable list of changed files; opens selected file in your difftool specified inside the profile.py file"
+        }
+    ]
+}

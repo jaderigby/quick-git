@@ -1,16 +1,21 @@
-def example():
-	print "process working!"
+import helpers, json
+
+actionList = json.loads(helpers.read_file('action-list.json'))
 
 def statusMessage():
-	print '''
-[ qit all ]			add, commit, and push all changes
-[ qit dfile ]			diff a specific file against HEAD	
-[ qit branch ]			get a list of branches; select branch to switch to
-[ qit feature ]			creates a new feature branch
-[ qit remove ]			removes/deletes both local and remote branch
-[ qit diff ]			gives you a selectable list of changed files; opens selected file in your difftool specified inside the profile.py file
-'''
+	if len(actionList['actions']) > 0:
+		for item in actionList['actions']:
+			print('''\n[ {} {} ]\t\t{}
+'''.format(actionList['alias'], item['name'], item['description']))
+	else:
+		print('''
+quick-git is working successfully!
+''')
+
 def done():
 	print('''
 [ Process Completed ]
 ''')
+
+def example():
+	print "process working!"
