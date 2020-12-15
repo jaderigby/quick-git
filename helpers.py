@@ -38,6 +38,9 @@ def write_file(FILEPATH, DATA):
 	FILE.write(DATA)
 	FILE.close()
 
+def user_input(STRING):
+    return raw_input(STRING)
+
 def run_command(CMD, option = True):
 	import subprocess
 	if option:

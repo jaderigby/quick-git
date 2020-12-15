@@ -6,6 +6,7 @@ import Feature
 import Remove
 import Branch
 import Diff
+import Restore
 # new imports start here
 
 # settings = helpers.get_settings()
@@ -38,4 +39,7 @@ elif action == "branch":
 
 elif action == "diff":
     Diff.execute()
+
+elif action == "re":
+    Restore.execute()
 # new actions start here
