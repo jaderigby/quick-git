@@ -37,10 +37,6 @@
         {
             "name": "status",
             "description": ""
-        },
-        {
-            "name": "state",
-            "description": ""
         }
     ]
 }
