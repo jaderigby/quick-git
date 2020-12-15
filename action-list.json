@@ -33,6 +33,14 @@
         {
             "name": "reback",
             "description": "restores version of file from last commit in current branch"
+        },
+        {
+            "name": "status",
+            "description": ""
+        },
+        {
+            "name": "state",
+            "description": ""
         }
     ]
 }
