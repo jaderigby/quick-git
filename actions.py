@@ -7,6 +7,7 @@ import Remove
 import Branch
 import Diff
 import Restore
+import RestoreBack
 # new imports start here
 
 # settings = helpers.get_settings()
@@ -42,4 +43,7 @@ elif action == "diff":
 
 elif action == "re":
     Restore.execute()
+
+elif action == "reback":
+    RestoreBack.execute()
 # new actions start here

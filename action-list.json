@@ -29,6 +29,10 @@
         {
             "name": "re",
             "description": "restores version found in master.  To do this, it switches to your local master branch, does a git pull, switches back to your current branch, and then does a git restore --source master -- filename"
+        },
+        {
+            "name": "reback",
+            "description": "restores version of file from last commit in current branch"
         }
     ]
 }
