@@ -28,7 +28,7 @@
         },
         {
             "name": "re",
-            "description": "restores version found in master.  To do this, it switches to your local master branch, does a git pull, switches back to your current branch, and then does a git restore --source master -- filename"
+            "description": "restores version found in origin/master.  It runs git restore --source origin/master -- filepath. Options: [ qit re file:someFile.txt, qit re path:path/to/dir ]"
         },
         {
             "name": "reback",
@@ -36,7 +36,7 @@
         },
         {
             "name": "status",
-            "description": ""
+            "description": "same as git status"
         }
     ]
 }

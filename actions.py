@@ -19,6 +19,8 @@ try:
 except:
 	action = None
 
+args = sys.argv[2:]
+
 if action == None:
 	msg.statusMessage()
 
@@ -41,7 +43,7 @@ elif action == "diff":
     Diff.execute()
 
 elif action == "re":
-    Restore.execute()
+    Restore.execute(args)
 
 elif action == "reback":
     RestoreBack.execute()
