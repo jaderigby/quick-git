@@ -9,6 +9,7 @@ import Branch
 import Diff
 import Restore
 import RestoreBack
+import Status
 # new imports start here
 
 # settings = helpers.get_settings()
