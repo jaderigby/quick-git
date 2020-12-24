@@ -24,11 +24,11 @@
         },
         {
             "name": "diff",
-            "description": "gives you a selectable list of changed files; opens selected file in your difftool specified inside the profile.py file"
+            "description": "gives you a selectable list of changed files; \n\t\t\topens selected file in your difftool \n\t\t\tspecified inside the profile.py file"
         },
         {
             "name": "re",
-            "description": "restores version found in origin/master.  It runs git restore --source origin/master -- filepath. Options: [ qit re file:someFile.txt, qit re path:path/to/dir ]"
+            "description": "restores version found in origin/master.  It runs \n\t\t\tgit restore --source origin/master -- filepath. Options: \n\t\t\t[ qit re file:someFile.txt, qit re path:path/to/dir ]"
         },
         {
             "name": "reback",
