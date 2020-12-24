@@ -36,7 +36,7 @@
         },
         {
             "name": "status",
-            "description": "same as git status"
+            "description": "same as git status, but more fun!"
         }
     ]
 }

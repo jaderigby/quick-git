@@ -2,7 +2,6 @@ import messages as msg
 import sys, helpers
 import commitAll
 import dfile
-import testModule
 import Feature
 import Remove
 import Branch
