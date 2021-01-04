@@ -7,7 +7,7 @@ def execute():
     out = subprocess.check_output(["git", "branch"]).decode('utf-8')
     outList = out.split()
     if '*' in outList: outList.remove('*')
-    currentBranch = subprocess.check_output(["git", "branch", "--show-current"]).split()
+    currentBranch = subprocess.check_output(["git", "branch", "--show-current"]).decode('utf-8').split()
     print("")
     i = 0
     for item in outList:
@@ -18,7 +18,7 @@ def execute():
             print('[{number}]  {branch}'.format(number=i, branch=item))
     print('\n[x]  Exit\n')
     selection = helpers.user_input("Please select branch to checkout: ")
-    if selection is 'x':
+    if selection == 'x':
         return
     else:
         branchName = outList[int(selection) - 1]
