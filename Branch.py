@@ -27,7 +27,7 @@ def execute():
         else:
             print('[{number}]  {branch}'.format(number=i, branch=item))
     print('\n[x]  Exit\n')
-    selection = raw_input("Please select branch to checkout: ")
+    selection = helpers.user_input("Please select branch to checkout: ")
     if selection is 'x':
         return
     else:
