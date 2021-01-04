@@ -156,7 +156,7 @@ def status_selection(DESCRIPTION, LIST):
 
 	while True:
 		print(str)
-		selection = raw_input('{}'.format(DESCRIPTION))
+		selection = user_input('{}'.format(DESCRIPTION))
 		pat = re.compile("[0-9]+")
 		if pat.match(selection):
 			selection = int(selection)
@@ -184,7 +184,7 @@ def user_list_selection(DESCRIPTION, LIST):
 
 	while True:
 		print(str)
-		selection = raw_input('{}'.format(DESCRIPTION))
+		selection = user_input('{}'.format(DESCRIPTION))
 		pat = re.compile("[0-9,]+")
 		match = re.search(pat, selection)
 		listPat = re.compile(",")

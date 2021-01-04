@@ -11,7 +11,12 @@ def execute():
         if isinstance(selection, int):
             option = listingList[selection - 1]
             currentPath = helpers.run_command_output('pwd', False)
-            helpers.run_command('git difftool {}/{} {}'.format(currentPath.replace('\n', ''), option, settings['differ']))
+            currentPathList = currentPath.split('/')[:-1]
+            currentPathRevised = ""
+            for item in currentPathList:
+                if item != '':
+                    currentPathRevised += '/' + item
+            helpers.run_command('git difftool {}/{} {}'.format(currentPathRevised, option, settings['differ']))
         elif selection is 'exit':
             print('\nExiting ...\n')
             break
