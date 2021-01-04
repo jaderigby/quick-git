@@ -4,6 +4,15 @@ from settings import settings as generalSettings
 
 profilePath = settings['profile_url'] + settings['profile']
 
+def path(TYPE):
+	import os
+	if TYPE == 'user':
+		return os.path.expanduser('~/')
+	elif TYPE =='util' or TYPE == 'utility':
+		return os.path.dirname(os.path.realpath(__file__))
+	else:
+		return False
+
 def load_profile():
 	import os
 	if os.path.exists(profilePath):
@@ -131,3 +140,75 @@ def profile():
 
 # custom helpers start here
 # =========================
+
+def separation():
+	return '     '
+
+def status_selection(DESCRIPTION, LIST):
+	import re
+	str = ''
+	print('')
+	for i, item in enumerate(LIST, start=1):
+		str += '[{index}] {item}{separator}'.format(index=i, item=item, separator=separation())
+	str += '[x] Exit\n'
+
+	finalAnswer = False
+
+	while True:
+		print(str)
+		selection = raw_input('{}'.format(DESCRIPTION))
+		pat = re.compile("[0-9]+")
+		if pat.match(selection):
+			selection = int(selection)
+		if isinstance(selection, int):
+			finalAnswer = selection
+			break
+		elif selection == 'x':
+			finalAnswer = 'exit'
+			break
+		elif selection == '':
+			finalAnswer = 'exit'
+			break
+		else:
+			print("\nPlease select a valid entry...")
+	return finalAnswer
+
+def user_list_selection(DESCRIPTION, LIST):
+	import re
+	str = ''
+	for i, item in enumerate(LIST, start=1):
+		str += '\n[{index}] {item}'.format(index=i, item=item)
+	str += '\n\n[x] Exit (Push All)\n'
+
+	finalAnswer = False
+
+	while True:
+		print(str)
+		selection = raw_input('{}'.format(DESCRIPTION))
+		pat = re.compile("[0-9,]+")
+		match = re.search(pat, selection)
+		listPat = re.compile(",")
+		listMatch = re.search(listPat, selection)
+		if match and listMatch:
+			selectionList = selection.split(",")
+			# reset selection to empty list, after selectionList created
+			selection = []
+			for item in selectionList:
+				selection.append(LIST[int(item) - 1])
+			# print(isinstance(selection, list))
+		elif match:
+			selection = LIST[int(selection) - 1]
+		if isinstance(selection, list):
+			finalAnswer = selection
+			break
+		elif selection is 'x':
+			finalAnswer = 'exit'
+			break
+		elif selection is '':
+			finalAnswer = 'exit'
+			break
+		else:
+			finalAnswer = selection
+			break
+		print("\nPlease select a valid entry...")
+	return finalAnswer

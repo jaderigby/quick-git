@@ -8,7 +8,7 @@ import Branch
 import Diff
 import Restore
 import RestoreBack
-import Status
+import DoStatus
 # new imports start here
 
 # settings = helpers.get_settings()
@@ -48,5 +48,5 @@ elif action == "reback":
     RestoreBack.execute()
 
 elif action == "status":
-    Status.execute()
+    DoStatus.execute()
 # new actions start here

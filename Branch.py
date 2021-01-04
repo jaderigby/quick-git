@@ -23,13 +23,13 @@ def execute():
     for item in outList:
         i += 1
         if item == currentBranch[0]:
-            print(bcolors.OKGREEN + ('  *    {branch}'.format(number=i, branch=item)) + bcolors.ENDC)
+            print(helpers.decorate('green', ' *   {branch}'.format(number=i, branch=item)))
         else:
-            print('[ {number} ]  {branch}'.format(number=i, branch=item))
-    print('\n[ x ]  Exit\n')
+            print('[{number}]  {branch}'.format(number=i, branch=item))
+    print('\n[x]  Exit\n')
     selection = raw_input("Please select branch to checkout: ")
     if selection is 'x':
-        return 
+        return
     else:
         branchName = outList[int(selection) - 1]
         if branchName != currentBranch[0]:

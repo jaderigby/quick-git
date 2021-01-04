@@ -28,11 +28,11 @@
         },
         {
             "name": "re",
-            "description": "restores version found in origin/master.  It runs \n\t\t\tgit restore --source origin/master -- filepath. Options: \n\t\t\t[ qit re file:someFile.txt, qit re path:path/to/dir ]"
+            "description": "restores version found in origin/master.  It runs \n\t\t\t'git restore --source origin/master -- filepath'.\n\t\t\tOptions: \n\t\t\t[ qit re file:someFile.txt, qit re path:path/to/dir ]\n\t\t\tYou can also do a batch of files: add the key 'restore'\n\t\t\tto your profile file.  Then, the 'restore' value will\n\t\t\tbe a list element, including all of the files that you\n\t\t\twould like to restore.  Finally to run the batch,\n\t\t\tdo 'qit re profile:true'."
         },
         {
             "name": "reback",
-            "description": "restores version of file from last commit in current branch"
+            "description": "restores version of file from last commit in current\n\t\t\tbranch"
         },
         {
             "name": "status",

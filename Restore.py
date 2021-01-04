@@ -8,13 +8,19 @@ def execute(ARGS):
     if argDict:
         if 'path' in argDict:
             filepath = argDict['path']
+            helpers.run_command('git restore --source origin/master -- {FILE}'.format(FILE= filepath))
         elif 'file' in argDict:
             filepath = argDict['file']
-        elif 'profile' in argDict and argDict['profile'] == 'true':
-            for item in settings['restore']:
-                helpers.run_command('git restore --source origin/master -- {FILE}'.format(FILE= item))
+            helpers.run_command('git restore --source origin/master -- {FILE}'.format(FILE= filepath))
+        elif 'profile' in argDict:
+            if argDict['profile'] == 'true':
+                for item in settings['restore']:
+                    helpers.run_command('git restore --source origin/master -- {FILE}'.format(FILE= item))
+            elif argDict['profile'] == 'open':
+                helpers.run_command('code {}/profiles/profile.py'.format(helpers.self_path()))
         else:
             filepath = helpers.user_input('File name/path to restore from master: ')
+            helpers.run_command('git restore --source origin/master -- {FILE}'.format(FILE= filepath))
     else:
         filepath = helpers.user_input('File name/path to restore from master: ')
         helpers.run_command('git restore --source origin/master -- {FILE}'.format(FILE= filepath))
