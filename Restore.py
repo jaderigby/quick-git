@@ -17,7 +17,7 @@ def execute(ARGS):
                 for item in settings['restore']:
                     helpers.run_command('git restore --source origin/master -- {FILE}'.format(FILE= item))
             elif argDict['profile'] == 'open':
-                helpers.run_command('code {}/profiles/profile.py'.format(helpers.self_path()))
+                helpers.run_command('code {}/profiles/profile.py'.format(helpers.path('util')))
         else:
             filepath = helpers.user_input('File name/path to restore from master: ')
             helpers.run_command('git restore --source origin/master -- {FILE}'.format(FILE= filepath))
