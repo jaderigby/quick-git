@@ -17,7 +17,7 @@ def execute():
                 if item != '':
                     currentPathRevised += '/' + item
             helpers.run_command('git difftool {}/{} {}'.format(currentPathRevised, option, settings['differ']))
-        elif selection is 'exit':
+        elif selection == 'exit':
             print('\nExiting ...\n')
             break
     msg.done()

@@ -4,15 +4,6 @@ from settings import settings as generalSettings
 
 profilePath = settings['profile_url'] + settings['profile']
 
-def path(TYPE):
-	import os
-	if TYPE == 'user':
-		return os.path.expanduser('~/')
-	elif TYPE =='util' or TYPE == 'utility':
-		return os.path.dirname(os.path.realpath(__file__))
-	else:
-		return False
-
 def load_profile():
 	import os
 	if os.path.exists(profilePath):
@@ -201,10 +192,10 @@ def user_list_selection(DESCRIPTION, LIST):
 		if isinstance(selection, list):
 			finalAnswer = selection
 			break
-		elif selection is 'x':
+		elif selection == 'x':
 			finalAnswer = 'exit'
 			break
-		elif selection is '':
+		elif selection == '':
 			finalAnswer = 'exit'
 			break
 		else:
