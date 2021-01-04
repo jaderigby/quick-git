@@ -24,14 +24,12 @@ def execute():
     for item in outList:
         i += 1
         if item == currentBranch[0]:
-            print(bcolors.OKGREEN + ('[ {number} ]  {branch}'.format(number=i, branch=item)) + bcolors.ENDC)
+            print(helpers.decorate('green', '[{number}]  {branch}'.format(number=i, branch=item)))
         else:
-            print('[ {number} ]  {branch}'.format(number=i, branch=item))
+            print('[{number}]  {branch}'.format(number=i, branch=item))
     selection = input("\nPlease select branch to remove/delete: ")
     branchName = outList[selection - 1]
-    print(bcolors.WARNING + ('''
-Removing: {}
-'''.format(branchName)) + bcolors.ENDC)
+    print(helpers.decorate('yellow', '\nRemoving: {}\n'.format(branchName)))
     print(branchName)
     print(currentBranch[0])
     if branchName == currentBranch[0]:
