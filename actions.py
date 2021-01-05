@@ -1,7 +1,6 @@
 import messages as msg
 import sys, helpers
 import commitAll
-import dfile
 import Feature
 import Remove
 import Branch
@@ -25,9 +24,6 @@ if action == None:
 
 elif action == "all":
     commitAll.execute()
-
-elif action == "dfile":
-    dfile.execute()
 
 elif action == "feature":
     Feature.execute()

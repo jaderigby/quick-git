@@ -17,13 +17,18 @@ cd ~/Documents/bash-tools/quick-git && mkdir profiles && cd profiles && echo '{\
 ## Usage ##
 
 - `qit` = get a list of commands
--  `qit all` = adds all files, commits, and pushes.
-- `qit branch` = gives you a list of selectable branches.  enter the number of the branch you wish to switch to and hit "enter"
-- `qit feature` = creates a new Square feature branch (local/remote); sets up tracking; switches to branch
+- `qit all` = adds all files, commits, and pushes.
+- `qit branch` = lets you switch branches by selecting from a list.
+- `qit feature` = creates a new feature branch (local/remote), sets up tracking, and then switches to the branch
 - `qit remove` = removes/deletes both local and remote branches; if you are currently on the branch, it first switches you to master, then continues.
-- `qit diff` = pulls up a list of modified files for selection.  Once a file is selected, the file will be opened in the difftool specified inside your `profile.py` file.  If you do not have a `profile.py` file, run the following command:
+- `qit diff` = gives you a selectable list of changed files;opens selected file in your difftool as specified inside the profile.py file. If you do not have a profile file, run the following:
 
 ```
-cd ~/Documents/bash-tools/quick-git && mkdir profiles
-touch ~/Documents/bash-tools/quick-git/profiles/profile.py && echo -e '{\n\t"settings" : {\n\t\t"differ" : ""\n\t}\n}' >> ~/Documents/bash-tools/quick-git/profiles/profile.py
+qit -profile
+```
+
+Then, the profile file configuration should look something like the following:
+
+```
+
 ```

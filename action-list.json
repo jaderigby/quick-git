@@ -4,15 +4,11 @@
     "actions": [
         {
             "name": "all",
-            "description": "add, commit, and push all changes"
-        },
-        {
-            "name": "dfile",
-            "description": "diff a specific file against HEAD"
+            "description": "add all files, commit, and push"
         },
         {
             "name": "branch",
-            "description": "get a list of branches; select branch to switch to"
+            "description": "switch branches by selecting from a list"
         },
         {
             "name": "feature",
@@ -28,7 +24,7 @@
         },
         {
             "name": "re",
-            "description": "restores version found in origin/master.  It runs \n\t\t\t'git restore --source origin/master -- filepath'.\n\t\t\tOptions: \n\t\t\t[ qit re file:someFile.txt, qit re path:path/to/dir ]\n\t\t\tYou can also do a batch of files: add the key 'restore'\n\t\t\tto your profile file.  Then, the 'restore' value will\n\t\t\tbe a list element, including all of the files that you\n\t\t\twould like to restore.  Finally to run the batch,\n\t\t\tdo 'qit re profile:true'."
+            "description": "restores version found in origin/master.  It runs \n\t\t\t'git restore --source origin/master -- filepath'.\n\t\t\tAvailable options: \n\nfile: \t\tspecify by file name, such as 'qit re file:someFile.txt'\npath:\t\tspecify by path\nprofile: \t'true', you can also do a batch of files: add the key 'restore'\n\t\tto your profile file.  Then, the 'restore' value will\n\t\tbe a list element, including all of the files that you\n\t\twould like to restore\n"
         },
         {
             "name": "reback",
