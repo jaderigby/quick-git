@@ -1,5 +1,5 @@
 import messages as msg
-import sys, helpers
+import sys, helpers, sizzle
 import commitAll
 import Feature
 import Remove
@@ -21,6 +21,15 @@ args = sys.argv[2:]
 
 if action == None:
 	msg.statusMessage()
+
+elif action == '-action':
+	sizzle.do_action(args)
+
+elif action == '-profile':
+	sizzle.profile()
+
+elif action == '-helpers':
+	sizzle.helpers()
 
 elif action == "all":
     commitAll.execute()
