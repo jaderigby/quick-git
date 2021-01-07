@@ -33,6 +33,10 @@
         {
             "name": "status",
             "description": "same as git status, but more fun!"
+        },
+        {
+            "name": "back",
+            "description": ""
         }
     ]
 }
