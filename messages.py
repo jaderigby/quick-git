@@ -20,3 +20,15 @@ def done():
 
 def example():
 	print("process working!")
+
+def set_differ():
+	statusMsg = '''
+Please add the differ configuration to your profile file:
+
+{
+	"settings" : {
+		"differ": "-y -t Kaleidoscope"
+	}
+}
+'''
+	print(statusMsg)
