@@ -23,7 +23,8 @@ def example():
 
 def set_differ():
 	statusMsg = '''
-Please add the differ configuration to your profile file:
+Please add the differ configuration to your profile file.
+For example:
 
 {
 	"settings" : {
