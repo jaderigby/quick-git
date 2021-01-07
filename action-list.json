@@ -36,7 +36,7 @@
         },
         {
             "name": "back",
-            "description": ""
+            "description": "go back to the previous checked out branch"
         }
     ]
 }

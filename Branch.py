@@ -11,11 +11,13 @@ def execute(ARGS):
     if '*' in outList: outList.remove('*')
     if argDict:
         if 'go' in argDict:
-            if re.search('back', argDict['go']):
+            if argDict['go'] == 'back':
                 try:
                     helpers.run_command('git checkout -')
                 except:
                     print("\nNothing to go back to. Exiting ...")
+            elif argDict['go'] == 'master':
+                helpers.run_command('git checkout master')
             elif re.search('[0-9]*', argDict['go']):
                 branchName = outList[int(argDict['go']) - 1]
                 helpers.run_command('git checkout {}'.format(branchName))
