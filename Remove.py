@@ -6,10 +6,10 @@ import subprocess, helpers, re
 def execute(ARGS):
     argDict = helpers.arguments(ARGS)
 
-    outList = helpers.run_command_output('git branch').split()
+    outList = helpers.run_command_output('git branch', False).split()
     if '*' in outList: outList.remove('*')
     if 'master' in outList: outList.remove('master')
-    currentBranch = helpers.run_command_output('git branch --show-current').replace('\n', '')
+    currentBranch = helpers.run_command_output('git branch --show-current', False).replace('\n', '')
     
     selection = helpers.user_selection("\nPlease select branch to remove/delete: ", outList, currentBranch)
     if selection != 'exit':
