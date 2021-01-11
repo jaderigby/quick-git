@@ -39,7 +39,7 @@ elif action == "feature":
     Feature.execute()
 
 elif action == "remove":
-    Remove.execute()
+    Remove.execute(args)
 
 elif action == "branch":
     Branch.execute(args)
