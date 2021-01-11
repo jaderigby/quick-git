@@ -17,12 +17,12 @@ def execute(ARGS):
         print(helpers.decorate('yellow', '\nRemoving: {}'.format(branchName)))
         if argDict:
             if 'local' in argDict or 'l' in argDict:
-                if 'local' == 'true' or 'local' == 't' or 'l' == 'true' or 'l' == 't':
+                if argDict['local'] == 'true' or argDict['local'] == 't' or argDict['l'] == 'true' or argDict['l'] == 't':
                     if branchName == currentBranch:
                         helpers.run_command('git checkout master')
                     helpers.run_command('git branch -D {}'.format(branchName))
             elif 'remote' in argDict or 'r' in argDict:
-                if 'remote' == 'true' or 'remote' == 't' or 'r' == 'true' or 'r' == 't':
+                if argDict['remote'] == 'true' or argDict['remote'] == 't' or argDict['remote'] == 'true' or argDict['remote'] == 't':
                     helpers.run_command('git push origin --delete {}'.format(branchName))
 
         else:
