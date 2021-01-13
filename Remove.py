@@ -6,18 +6,19 @@ import subprocess, helpers, re
 def execute(ARGS):
     argDict = helpers.arguments(ARGS)
 
-    # get list of local branches; filter out current and master
-    outList = helpers.run_command_output('git branch', False).split()
-    if '*' in outList: outList.remove('*')
-    if 'master' in outList: outList.remove('master')
+    # get list of local branches; filter out '*' and master
+    localBranchList = helpers.run_command_output('git branch', False).split()
+    if '*' in localBranchList: localBranchList.remove('*')
+    if 'master' in localBranchList: localBranchList.remove('master')
 
     # get current branch
     currentBranch = helpers.run_command_output('git branch --show-current', False).replace('\n', '')
     
-    # select branch to remove
-    selection = helpers.user_selection("\nPlease select branch to remove/delete: ", outList, currentBranch)
+    # select branch/s to remove
+    selection = helpers.user_selection("\nPlease select branch to remove/delete: ", localBranchList, currentBranch)
+    
     if selection != 'exit':
-        branchName = outList[selection - 1]
+        branchName = localBranchList[selection - 1]
         if argDict:
             if 'local' in argDict:
                 if argDict['local'] == 'true' or argDict['local'] == 't':

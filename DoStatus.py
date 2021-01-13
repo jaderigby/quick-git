@@ -5,7 +5,7 @@ settings = helpers.get_settings()
 
 def execute():
     helpers.run_command('git status')
-    selection = helpers.status_selection('Selection: ', ['diff', 'unstage all', 'push/exclude'])
+    selection = helpers.status_selection('Selection: ', ['diff', 'push all', 'unstage all', 'push/exclude'])
     if selection == 1:
         if settings:
             if 'differ' in settings:
@@ -23,6 +23,12 @@ def execute():
             else:
                 msg.set_differ()
     elif selection == 2:
+        helpers.run_command('git add -A')
+        helpers.run_command('git status', False)
+        commitMessage = helpers.user_input("Commit Message: ")
+        helpers.run_command('git commit -m "{}"'.format(commitMessage))
+        helpers.run_command('git push')
+    elif selection == 3:
         helpers.run_command('git reset *')
     elif selection == 3:
         print("\n=====================")
