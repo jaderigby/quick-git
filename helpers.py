@@ -197,3 +197,11 @@ def user_list_selection(DESCRIPTION, LIST):
 			break
 		print("\nPlease select a valid entry...")
 	return finalAnswer
+
+def remove_local_branch(CURRENT_BRANCH, BRANCH_TO_REMOVE):
+	if BRANCH_TO_REMOVE == CURRENT_BRANCH:
+		run_command('git checkout master')
+	run_command('git branch -D {}'.format(CURRENT_BRANCH))
+
+def remove_remote_branch(BRANCH_TO_REMOVE):
+	run_command('git push origin --delete {}'.format(BRANCH_TO_REMOVE))

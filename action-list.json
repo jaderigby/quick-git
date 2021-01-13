@@ -8,7 +8,7 @@
         },
         {
             "name": "branch",
-            "description": "switch branches by selecting from a list"
+            "description": "switch branches by selecting from a list. \n\t\t\tYou can also use the param 'go' to jump to a particular\n\t\t\tbranch/selection:\n\ngo:\t\tuse 'go:3', for example, to jump to branch selection 3 from the \n\t\tlist. You can also use the expressive 'go:master' to jump\n\t\tdirectly to master\n"
         },
         {
             "name": "feature",

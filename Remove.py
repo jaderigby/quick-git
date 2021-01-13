@@ -6,30 +6,50 @@ import subprocess, helpers, re
 def execute(ARGS):
     argDict = helpers.arguments(ARGS)
 
+    # get list of local branches; filter out current and master
     outList = helpers.run_command_output('git branch', False).split()
     if '*' in outList: outList.remove('*')
     if 'master' in outList: outList.remove('master')
+
+    # get current branch
     currentBranch = helpers.run_command_output('git branch --show-current', False).replace('\n', '')
     
+    # select branch to remove
     selection = helpers.user_selection("\nPlease select branch to remove/delete: ", outList, currentBranch)
     if selection != 'exit':
         branchName = outList[selection - 1]
-        print(helpers.decorate('yellow', '\nRemoving: {}'.format(branchName)))
         if argDict:
-            if 'local' in argDict or 'l' in argDict:
-                if argDict['local'] == 'true' or argDict['local'] == 't' or argDict['l'] == 'true' or argDict['l'] == 't':
-                    if branchName == currentBranch:
-                        helpers.run_command('git checkout master')
-                    helpers.run_command('git branch -D {}'.format(branchName))
-            elif 'remote' in argDict or 'r' in argDict:
-                if argDict['remote'] == 'true' or argDict['remote'] == 't' or argDict['remote'] == 'true' or argDict['remote'] == 't':
-                    helpers.run_command('git push origin --delete {}'.format(branchName))
+            if 'local' in argDict:
+                if argDict['local'] == 'true' or argDict['local'] == 't':
+                    print('\n\nRemoving local branch: {}'.format(helpers.decorate('yellow', branchName)))
+                    confirm = helpers.user_input("\nAre you sure? [y/n] ")
+                    if confirm == 'y':
+                        helpers.remove_local_branch(currentBranch, branchName)
+            elif 'l' in argDict:
+                if argDict['l'] == 'true' or argDict['l'] == 't':
+                    print('\n\nRemoving local branch: {}'.format(helpers.decorate('yellow', branchName)))
+                    confirm = helpers.user_input("\nAre you sure? [y/n] ")
+                    if confirm == 'y':
+                        helpers.remove_local_branch(currentBranch, branchName)
+            elif 'remote' in argDict:
+                if argDict['remote'] == 'true' or argDict['remote'] == 't':
+                    print('\n\nRemoving remote branch: {}'.format(helpers.decorate('yellow', branchName)))
+                    confirm = helpers.user_input("\nAre you sure? [y/n] ")
+                    if confirm == 'y':
+                        helpers.remove_remote_branch(branchName)
+            elif 'r' in argDict:
+                if argDict['r'] == 'true' or argDict['r'] == 't':
+                    print('\n\nRemoving remote branch: {}'.format(helpers.decorate('yellow', branchName)))
+                    confirm = helpers.user_input("\nAre you sure? [y/n] ")
+                    if confirm == 'y':
+                        helpers.remove_remote_branch(branchName)
 
         else:
-            if branchName == currentBranch:
-                helpers.run_command('git checkout master')
-            helpers.run_command('git branch -D {}'.format(branchName))
-            helpers.run_command('git push origin --delete {}'.format(branchName))
+            print('\n\nRemoving branch: {}'.format(helpers.decorate('yellow', branchName)))
+            confirm = helpers.user_input("\nAre you sure? [y/n] ")
+            if confirm == 'y':
+                helpers.remove_local_branch(currentBranch, branchName)
+                helpers.remove_remote_branch(branchName)
     else:
         print("\nExiting ...\n")
 
