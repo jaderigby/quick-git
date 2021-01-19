@@ -8,5 +8,5 @@ def execute():
     helpers.run_command('git checkout master')
     helpers.run_command('git pull')
     helpers.run_command('git checkout -b {}'.format(nameSelect))
-    helpers.run_command('git push')
-    helpers.run_command('git branch -u origin/{}'.format(nameSelect))
+    helpers.run_command('git push -u origin {}'.format(nameSelect))
+    # helpers.run_command('git branch -u origin/{}'.format(nameSelect))

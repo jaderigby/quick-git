@@ -6,7 +6,7 @@ import subprocess, helpers, re
 def execute(ARGS):
     argDict = helpers.arguments(ARGS)
 
-    # get list of local branches; filter out '*' and master
+    # get list of local branches; filter out '*' and 'master'
     localBranchList = helpers.run_command_output('git branch', False).split()
     if '*' in localBranchList: localBranchList.remove('*')
     if 'master' in localBranchList: localBranchList.remove('master')
