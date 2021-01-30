@@ -30,10 +30,12 @@ def execute():
         helpers.run_command('git push')
     elif selection == 3:
         helpers.run_command('git reset *')
-    elif selection == 3:
+    elif selection == 4:
         print("\n=====================")
         fileList = helpers.run_command_output('git diff --name-only', False).splitlines()
-        fileSelection = helpers.user_list_selection('push all, except: [eg: 1,3,4] ', fileList)
+        untrackedListing = helpers.run_command_output('git ls-files --others --exclude-standard').splitlines()
+        combinedList = fileList + untrackedListing
+        fileSelection = helpers.user_list_selection('push all, except: [eg: 1,3,4] ', combinedList)
         helpers.run_command('git add -A')
         if isinstance(fileSelection, list):
             for item in fileSelection:
