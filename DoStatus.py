@@ -33,15 +33,13 @@ def execute():
     elif selection == 4:
         print("\n=====================")
         fileList = helpers.run_command_output('git diff --name-only', False).splitlines()
-        untrackedListing = helpers.run_command_output('git ls-files --others --exclude-standard').splitlines()
+        untrackedListing = helpers.run_command_output('git ls-files --others --exclude-standard', False).splitlines()
         combinedList = fileList + untrackedListing
-        fileSelection = helpers.user_list_selection('push all, except: [eg: 1,3,4] ', combinedList)
+        fileSelection = helpers.user_selection('push all, except: [eg: 1,3,4] ', combinedList, True)
         helpers.run_command('git add -A')
-        if isinstance(fileSelection, list):
+        if fileSelection != 'exit':
             for item in fileSelection:
-                helpers.run_command('git reset {}'.format(item))
-        elif fileSelection != 'exit':
-            helpers.run_command('git reset {}'.format(fileSelection))
+                helpers.run_command('git reset {}'.format(combinedList[item - 1]))
         helpers.run_command('git status')
         commitMessage = helpers.user_input("Commit Message: ")
         helpers.run_command('git commit -m "{}"'.format(commitMessage))

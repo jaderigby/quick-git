@@ -15,7 +15,7 @@ def execute(ARGS):
     currentBranch = helpers.run_command_output('git branch --show-current', False).replace('\n', '')
     
     # select branch/s to remove
-    selection = helpers.user_selection("\nPlease select branch to remove/delete: ", localBranchList, currentBranch)
+    selection = helpers.user_selection("\nPlease select branch to remove/delete: ", localBranchList, False, currentBranch)
     
     if selection != 'exit':
         branchName = localBranchList[selection - 1]
