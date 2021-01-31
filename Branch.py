@@ -23,6 +23,12 @@ def execute(ARGS):
                 helpers.run_command('git checkout {}'.format(branchName))
             else:
                 print("\nNot a valid selection")
+        if argDict['new']:
+            nameSelect = argDict['new']
+            helpers.run_command('git checkout master')
+            helpers.run_command('git pull')
+            helpers.run_command('git checkout -b {}'.format(nameSelect))
+            helpers.run_command('git push -u origin {}'.format(nameSelect))
     else:
         currentBranch = helpers.run_command_output('git branch --show-current', False).replace('\n','')
         print("")

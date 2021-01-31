@@ -9,6 +9,7 @@ import Restore
 import RestoreBack
 import DoStatus
 import Back
+import New
 # new imports start here
 
 # settings = helpers.get_settings()
@@ -58,4 +59,7 @@ elif action == "status":
 
 elif action == "back":
 	Back.execute()
+
+elif action == "new":
+	New.execute()
 # new actions start here
