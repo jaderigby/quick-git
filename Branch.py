@@ -24,18 +24,28 @@ def execute(ARGS):
             else:
                 print("\nNot a valid selection")
     else:
-        currentBranch = subprocess.check_output(["git", "branch", "--show-current"]).decode('utf-8').split()
+        currentBranch = helpers.run_command_output('git branch --show-current', False).replace('\n','')
         print("")
-        i = 0
-        for item in outList:
-            i += 1
-            if item == currentBranch[0]:
-                print(helpers.decorate('green', ' *   {branch}'.format(number=i, branch=item)))
-            else:
-                print('[{number}]  {branch}'.format(number=i, branch=item))
-        print('\n[x]  Exit\n')
-        selection = helpers.user_input("Please select branch to checkout: ")
-        if selection == 'x':
+        # i = 0
+        # for item in outList:
+        #     i += 1
+        #     if item == currentBranch:
+        #         print(helpers.decorate('green', ' *   {branch}'.format(number=i, branch=item)))
+        #     else:
+        #         print('[{number}]  {branch}'.format(number=i, branch=item))
+        # print('\n[x]  Exit\n')
+        # selection = helpers.user_input("Please select branch to checkout: ")
+
+
+
+        print(currentBranch)
+        selection = helpers.user_selection_with_highlight("Please select branch to checkout: ", outList, False, currentBranch)
+
+
+
+
+
+        if selection == 'exit':
             return
         else:
             branchName = outList[int(selection) - 1]
