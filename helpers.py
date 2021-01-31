@@ -262,3 +262,20 @@ def user_selection_range(DESCRIPTION, LIST):
 		else:
 			print("\nPlease select a valid entry...")
 	return finalAnswer
+
+def check_context(OBJ):
+	if OBJ:
+		if 'local' in OBJ:
+			if OBJ['local'] == 'true' or OBJ['local'] == 't':
+				return 'removeLocalOnly'
+		elif 'l' in OBJ:
+			if OBJ['l'] == 'true' or OBJ['l'] == 't':
+				return 'removeLocalOnly'
+		elif 'remote' in OBJ:
+			if OBJ['remote'] == 'true' or OBJ['remote'] == 't':
+				return 'removeRemoteOnly'
+		elif 'r' in OBJ:
+			if OBJ['r'] == 'true' or OBJ['r'] == 't':
+				return 'removeRemoteOnly'
+	else:
+		return 'removeLocalAndRemote'

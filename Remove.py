@@ -14,43 +14,45 @@ def execute(ARGS):
     # get current branch
     currentBranch = helpers.run_command_output('git branch --show-current', False).replace('\n', '')
     
-    # select branch/s to remove
-    selection = helpers.user_selection("\nPlease select branch to remove/delete: ", localBranchList, False, currentBranch)
-    
-    if selection != 'exit':
-        branchName = localBranchList[selection - 1]
-        if argDict:
-            if 'local' in argDict:
-                if argDict['local'] == 'true' or argDict['local'] == 't':
-                    print('\n\nRemoving local branch: {}'.format(helpers.decorate('yellow', branchName)))
-                    confirm = helpers.user_input("\nAre you sure? [y/n] ")
-                    if confirm == 'y':
-                        helpers.remove_local_branch(currentBranch, branchName)
-            elif 'l' in argDict:
-                if argDict['l'] == 'true' or argDict['l'] == 't':
-                    print('\n\nRemoving local branch: {}'.format(helpers.decorate('yellow', branchName)))
-                    confirm = helpers.user_input("\nAre you sure? [y/n] ")
-                    if confirm == 'y':
-                        helpers.remove_local_branch(currentBranch, branchName)
-            elif 'remote' in argDict:
-                if argDict['remote'] == 'true' or argDict['remote'] == 't':
-                    print('\n\nRemoving remote branch: {}'.format(helpers.decorate('yellow', branchName)))
-                    confirm = helpers.user_input("\nAre you sure? [y/n] ")
-                    if confirm == 'y':
-                        helpers.remove_remote_branch(branchName)
-            elif 'r' in argDict:
-                if argDict['r'] == 'true' or argDict['r'] == 't':
-                    print('\n\nRemoving remote branch: {}'.format(helpers.decorate('yellow', branchName)))
-                    confirm = helpers.user_input("\nAre you sure? [y/n] ")
-                    if confirm == 'y':
-                        helpers.remove_remote_branch(branchName)
+    # Assign context
+    context = helpers.check_context(argDict)
 
-        else:
+    # select branch/s to remove
+    selections = helpers.user_selection("\nPlease select branch to remove/delete: ", localBranchList, True, currentBranch)
+    
+    if selections != 'exit':
+        branchesString = '\n'
+        branchesToRemoveList = []
+        for branchItem in selections:
+            branchName = localBranchList[branchItem - 1]
+            branchesString += '- {}\n'.format(localBranchList[branchItem - 1])
+            branchesToRemoveList.append(branchName)
+
+        if context == 'removeLocalOnly':
+            if len(selections) > 1:
+                print('\n\nRemoving local branches: \n{}'.format(helpers.decorate('yellow', branchesString)))
+            else:
+                print('\n\nRemoving local branch: {}'.format(helpers.decorate('yellow', branchName)))
+            confirm = helpers.user_input("\nAre you sure? [y/n] ")
+            if confirm == 'y':
+                for branch in branchesToRemoveList:
+                    helpers.remove_local_branch(currentBranch, branch)
+        elif context == 'removeRemoteOnly':
+            if len(selections) > 1:
+                print('\n\nRemoving remote branches: {}'.format(helpers.decorate('yellow', branchesString)))
+            else:
+                print('\n\nRemoving remote branch: {}'.format(helpers.decorate('yellow', branchName)))
+            confirm = helpers.user_input("\nAre you sure? [y/n] ")
+            if confirm == 'y':
+                for branch in branchesToRemoveList:
+                    helpers.remove_remote_branch(branch)
+        elif context == 'removeLocalAndRemote':
             print('\n\nRemoving branch: {}'.format(helpers.decorate('yellow', branchName)))
             confirm = helpers.user_input("\nAre you sure? [y/n] ")
             if confirm == 'y':
-                helpers.remove_local_branch(currentBranch, branchName)
-                helpers.remove_remote_branch(branchName)
+                for branch in branchesToRemoveList:
+                    helpers.remove_local_branch(currentBranch, branch)
+                    helpers.remove_remote_branch(branch)
     else:
         print("\nExiting ...\n")
 
