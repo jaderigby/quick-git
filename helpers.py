@@ -100,7 +100,7 @@ def list_expander(LIST):
     return expandedList
 
 # generates a user selection session, where the passed in list is presented as numbered selections; selecting "x" or just hitting enter results in the string "exit" being returned. Any invaild selection is captured and presented with the message "Please select a valid entry"
-def user_selection(DESCRIPTION, LIST, LIST_SELECT = False, CURRENT = ''):
+def user_selection(DESCRIPTION, LIST, LIST_SELECT = False):
 	import re
 	str = ''
 	for i, item in enumerate(LIST, start=1):
@@ -164,6 +164,43 @@ def status_selection(DESCRIPTION, LIST):
 		if pat.match(selection):
 			selection = int(selection)
 		if isinstance(selection, int):
+			finalAnswer = selection
+			break
+		elif selection == 'x':
+			finalAnswer = 'exit'
+			break
+		elif selection == '':
+			finalAnswer = 'exit'
+			break
+		else:
+			print("\nPlease select a valid entry...")
+	return finalAnswer
+
+def user_selection_with_highlight(DESCRIPTION, LIST, LIST_SELECT = False, CURRENT = ''):
+	import re
+	str = ''
+	for i, item in enumerate(LIST, start=1):
+		if item == CURRENT:
+			str += decorate('green', '\n[{index}] {item}'.format(index=i, item=item))
+		else:
+			str += '\n[{index}] {item}'.format(index=i, item=item)
+	str += '\n\n[x] Exit\n'
+
+	finalAnswer = False
+
+	while True:
+		print(str)
+		selection = user_input('{}'.format(DESCRIPTION))
+		if LIST_SELECT:
+			pat = re.compile("[0-9,\- ]+")
+		else:
+			pat = re.compile("[0-9]+")
+		if pat.match(selection):
+			if LIST_SELECT:
+				selection = list_expander(selection)
+			else:
+				selection = int(selection)
+		if isinstance(selection, int) or isinstance(selection, list):
 			finalAnswer = selection
 			break
 		elif selection == 'x':

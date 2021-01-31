@@ -18,7 +18,7 @@ def execute(ARGS):
     context = helpers.check_context(argDict)
 
     # select branch/s to remove
-    selections = helpers.user_selection("\nPlease select branch to remove/delete: ", localBranchList, True, currentBranch)
+    selections = helpers.user_selection_with_highlight("\nPlease select branch to remove/delete: ", localBranchList, True, currentBranch)
     
     if selections != 'exit':
         branchesString = '\n'
