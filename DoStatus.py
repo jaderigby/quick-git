@@ -15,15 +15,19 @@ def execute():
         if selection == 1:
             if settings:
                 if 'differ' in settings:
-                    while True:
-                        selection = helpers.user_selection('Select file to diff: ', fileList)
-                        if isinstance(selection, int):
-                            option = fileList[selection - 1]
-                            currentPath = helpers.run_command_output('pwd', False)
-                            helpers.run_command('git difftool {}/{} {}'.format(currentPath.replace('\n', ''), option, settings['differ']))
-                        elif selection == 'exit':
-                            print('\nExiting ...\n')
-                            break
+                    if len(fileList) == 0:
+                        print("\nNothing to diff!\n")
+                        break
+                    else:
+                        while True:
+                            selection = helpers.user_selection('Select file to diff: ', fileList)
+                            if isinstance(selection, int):
+                                option = fileList[selection - 1]
+                                currentPath = helpers.run_command_output('pwd', False)
+                                helpers.run_command('git difftool {}/{} {}'.format(currentPath.replace('\n', ''), option, settings['differ']))
+                            elif selection == 'exit':
+                                print('\nExiting ...\n')
+                                break
                 else:
                     msg.set_differ()
         elif selection == 2:
@@ -43,6 +47,9 @@ def execute():
                 for item in fileSelection:
                     helpers.run_command('git reset {}'.format(combinedList[item - 1]))
             helpers.run_command('git status')
+            if len(helpers.run_command_output('git diff --name-only --cached', False)) == 0:
+                print("\nNothing staged!\n")
+                break
             commitMessage = helpers.user_input("Commit Message: ")
             helpers.run_command('git commit -m "{}"'.format(commitMessage))
             helpers.run_command('git push')
