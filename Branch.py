@@ -27,12 +27,13 @@ def execute(ARGS):
         currentBranch = helpers.run_command_output('git branch --show-current', False).replace('\n','')
         print("")
         selection = helpers.user_selection_with_highlight("Please select branch to checkout: ", outList, False, currentBranch, True)
-        if selection == 'exit':
-            return
-        else:
+        if isinstance(selection, int):
             branchName = outList[int(selection) - 1]
             if branchName != currentBranch[0]:
                 helpers.run_command('git checkout {}'.format(branchName))
             else:
-                return
+                msg.exit()
+        else:
+            msg.exit()
+
     msg.done()

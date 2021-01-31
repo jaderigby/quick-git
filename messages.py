@@ -18,6 +18,9 @@ def done():
 [ Process Completed ]
 ''')
 
+def exit():
+	print("\nExiting ...\n")
+
 def example():
 	print("process working!")
 

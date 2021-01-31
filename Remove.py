@@ -54,6 +54,6 @@ def execute(ARGS):
                     helpers.remove_local_branch(currentBranch, branch)
                     helpers.remove_remote_branch(branch)
     else:
-        print("\nExiting ...\n")
+        msg.exit()
 
     msg.done()
