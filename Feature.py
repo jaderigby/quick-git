@@ -5,8 +5,6 @@ import subprocess, helpers
 
 def execute():
     nameSelect = helpers.user_input("Please select a name for your feature branch: ")
-    helpers.run_command('git checkout master')
-    helpers.run_command('git pull')
-    helpers.run_command('git checkout -b {}'.format(nameSelect))
+    currentBranch = helpers.run_command_output('git branch --show-current', False).replace('\n','')
+    helpers.run_command('git checkout -b {} {}'.format(nameSelect, currentBranch))
     helpers.run_command('git push -u origin {}'.format(nameSelect))
-    # helpers.run_command('git branch -u origin/{}'.format(nameSelect))

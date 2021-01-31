@@ -16,7 +16,7 @@
         },
         {
             "name": "feature", 
-            "description": "creates a new feature branch"
+            "description": "creates a new feature branch of of the current branch"
         }, 
         {
             "name": "remove", 
