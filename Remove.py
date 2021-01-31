@@ -39,7 +39,7 @@ def execute(ARGS):
                     helpers.remove_local_branch(currentBranch, branch)
         elif context == 'removeRemoteOnly':
             if len(selections) > 1:
-                print('\n\nRemoving remote branches: {}'.format(helpers.decorate('yellow', branchesString)))
+                print('\n\nRemoving remote branches: \n{}'.format(helpers.decorate('yellow', branchesString)))
             else:
                 print('\n\nRemoving remote branch: {}'.format(helpers.decorate('yellow', branchName)))
             confirm = helpers.user_input("\nAre you sure? [y/n] ")
@@ -47,7 +47,10 @@ def execute(ARGS):
                 for branch in branchesToRemoveList:
                     helpers.remove_remote_branch(branch)
         elif context == 'removeLocalAndRemote':
-            print('\n\nRemoving branch: {}'.format(helpers.decorate('yellow', branchName)))
+            if len(selections) > 1:
+                print('\n\nRemoving branches: \n{}'.format(helpers.decorate('yellow', branchesString)))
+            else:
+                print('\n\nRemoving branch: {}'.format(helpers.decorate('yellow', branchName)))
             confirm = helpers.user_input("\nAre you sure? [y/n] ")
             if confirm == 'y':
                 for branch in branchesToRemoveList:

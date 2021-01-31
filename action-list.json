@@ -17,7 +17,7 @@
         {
             "name": "feature", 
             "description": "creates a new feature branch of of the current branch"
-        }, 
+        },
         {
             "name": "remove", 
             "description": "removes/deletes both local and remote branch.\n\t\t\tIf you want to remove local only or remove remote only,\n\t\t\tyou can use:\n\nlocal:\t\t'true' or 't', remove local only\nremote:\t\t'true' or 't', remove remote only\nl:\t\tshorthand for 'local'\nr:\t\tshorthand for 'remote'\n\n"
