@@ -173,11 +173,13 @@ def status_selection(DESCRIPTION, LIST):
 			print("\nPlease select a valid entry...")
 	return finalAnswer
 
-def user_selection_with_highlight(DESCRIPTION, LIST, LIST_SELECT = False, CURRENT = ''):
+def user_selection_with_highlight(DESCRIPTION, LIST, LIST_SELECT = False, CURRENT = '', EXCLUDE_CURRENT = False):
 	import re
 	str = ''
 	for i, item in enumerate(LIST, start=1):
-		if item == CURRENT:
+		if item == CURRENT and EXCLUDE_CURRENT:
+			str += decorate('green', '\n *  {item}'.format(index=i, item=item))
+		elif item == CURRENT and EXCLUDE_CURRENT == False:
 			str += decorate('green', '\n[{index}] {item}'.format(index=i, item=item))
 		else:
 			str += '\n[{index}] {item}'.format(index=i, item=item)

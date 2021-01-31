@@ -39,7 +39,7 @@ def execute(ARGS):
 
 
         print(currentBranch)
-        selection = helpers.user_selection_with_highlight("Please select branch to checkout: ", outList, False, currentBranch)
+        selection = helpers.user_selection_with_highlight("Please select branch to checkout: ", outList, False, currentBranch, True)
 
 
 
