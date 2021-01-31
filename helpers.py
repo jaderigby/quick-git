@@ -176,46 +176,6 @@ def status_selection(DESCRIPTION, LIST):
 			print("\nPlease select a valid entry...")
 	return finalAnswer
 
-def user_list_selection(DESCRIPTION, LIST):
-	import re
-	str = ''
-	for i, item in enumerate(LIST, start=1):
-		str += '\n[{index}] {item}'.format(index=i, item=item)
-	str += '\n\n[x] Exit (Push All)\n'
-
-	finalAnswer = False
-
-	while True:
-		print(str)
-		selection = user_input('{}'.format(DESCRIPTION))
-		pat = re.compile("[0-9,]+")
-		match = re.search(pat, selection)
-		listPat = re.compile(",")
-		listMatch = re.search(listPat, selection)
-		if match and listMatch:
-			selectionList = selection.split(",")
-			# reset selection to empty list, after selectionList created
-			selection = []
-			for item in selectionList:
-				selection.append(LIST[int(item) - 1])
-			# print(isinstance(selection, list))
-		elif match:
-			selection = LIST[int(selection) - 1]
-		if isinstance(selection, list):
-			finalAnswer = selection
-			break
-		elif selection == 'x':
-			finalAnswer = 'exit'
-			break
-		elif selection == '':
-			finalAnswer = 'exit'
-			break
-		else:
-			finalAnswer = selection
-			break
-		print("\nPlease select a valid entry...")
-	return finalAnswer
-
 def remove_local_branch(CURRENT_BRANCH, BRANCH_TO_REMOVE):
 	if BRANCH_TO_REMOVE == CURRENT_BRANCH:
 		run_command('git checkout master')
@@ -223,45 +183,6 @@ def remove_local_branch(CURRENT_BRANCH, BRANCH_TO_REMOVE):
 
 def remove_remote_branch(BRANCH_TO_REMOVE):
 	run_command('git push origin --delete {}'.format(BRANCH_TO_REMOVE))
-
-def user_selection_range(DESCRIPTION, LIST):
-	import re
-	str = ''
-	for i, item in enumerate(LIST, start=1):
-		str += '\n[{index}] {item}'.format(index=i, item=item)
-	str += '\n\n[x] Exit\n'
-
-	finalAnswer = False
-
-	while True:
-		print(str)
-		selection = user_input('{}'.format(DESCRIPTION))
-		pat = re.compile("[0-9,\-]+")
-		if pat.match(selection):
-			selectionList = selection.split(',')
-			rangePat = re.compile("[0-9]*-[0-9]*")
-			brokenOutList = []
-			for item in selectionList:
-				newList = []
-				if rangePat.match(item):
-					l = item.split('-')
-					min = int(l[0])
-					max = int(l[1])
-					newList = list(range(min, max + 1, 1))
-					brokenOutList += newList
-				else:
-					brokenOutList.append(int(item))
-			finalAnswer = brokenOutList
-			break
-		elif selection == 'x':
-			finalAnswer = 'exit'
-			break
-		elif selection == '':
-			finalAnswer = 'exit'
-			break
-		else:
-			print("\nPlease select a valid entry...")
-	return finalAnswer
 
 def check_context(OBJ):
 	if OBJ:
