@@ -4,6 +4,7 @@ import subprocess, helpers
 # settings = helpers.get_settings()
 
 def execute():
+    msg.new_branch_info()
     nameSelect = helpers.user_input("Please select a name for your feature branch: ")
     helpers.run_command('git checkout master')
     helpers.run_command('git pull')

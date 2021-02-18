@@ -36,3 +36,8 @@ For example:
 }
 '''
 	print(statusMsg)
+
+def new_branch_info():
+	print('''
+NOTE: This will temporarilly switch to - and then pull - the latest\nfrom master.
+''')

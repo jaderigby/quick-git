@@ -5,17 +5,11 @@ profilePath = settings['profile_url'] + settings['profile']
 
 def load_profile():
 	import os
-	if os.path.exists(profilePath):
-		return json.loads(read_file(profilePath))
-	else:
-		return json.loads("{}")
+	return json.loads(read_file(profilePath)) if os.path.exists(profilePath) else json.loads("{}")
 
 def get_settings():
 	profile = load_profile()
-	if 'settings' in profile:
-		return profile['settings']
-	else:
-		return False
+	return profile['settings'] if 'settings' in profile else False
 
 def path(TYPE):
 	import os
@@ -60,7 +54,6 @@ def run_command_output(CMD, option = True):
 
 		if err:
 			print(err)
-		
 		else:
 			result = out.decode('utf-8')
 
@@ -112,15 +105,9 @@ def user_selection(DESCRIPTION, LIST, LIST_SELECT = False):
 	while True:
 		print(str)
 		selection = user_input('{}'.format(DESCRIPTION))
-		if LIST_SELECT:
-			pat = re.compile("[0-9,\- ]+")
-		else:
-			pat = re.compile("[0-9]+")
+		pat = re.compile("[0-9,\- ]+") if LIST_SELECT else re.compile("[0-9]+")
 		if pat.match(selection):
-			if LIST_SELECT:
-				selection = list_expander(selection)
-			else:
-				selection = int(selection)
+			selection = list_expander(selection) if LIST_SELECT else int(selection)
 		if isinstance(selection, int) or isinstance(selection, list):
 			finalAnswer = selection
 			break
@@ -136,6 +123,13 @@ def user_selection(DESCRIPTION, LIST, LIST_SELECT = False):
 
 def arguments(ARGS, DIVIDER=':'):
 	return dict(item.split('{}'.format(DIVIDER)) for item in ARGS)
+
+def kv_set(DICT, KEY, DEFAULT = False):
+	if KEY in DICT:
+		DICT[KEY] = 't' if DICT[KEY] == 'true' else 'f' if DICT[KEY] == 'false' else DICT[KEY]
+		return DICT[KEY]
+	else:
+		return DEFAULT
 
 
 # custom helpers start here
