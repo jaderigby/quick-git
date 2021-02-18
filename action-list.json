@@ -1,45 +1,45 @@
 {
-    "alias": "qit", 
-    "toolName": "quick-git", 
+    "alias": "qit",
+    "toolName": "quick-git",
     "actions": [
         {
-            "name": "all", 
+            "name": "all",
             "description": "add all files, commit, and push"
-        }, 
+        },
         {
-            "name": "branch", 
+            "name": "branch",
             "description": "switch branches by selecting from a list.\n\t\t\tAvailable Options: \n\ngo:\t\tjump to a particular branch/selection. Example: 'go:3', to jump to\n\t\tbranch selection '3'. You can also use the expressive 'go:master'\n\t\tto jump directly to master\nnew:\t\tcreate a new branch; also, sets it up for remote\n\t\ttracking, ie 'set-upstream'\n"
         },
         {
-            "name": "new", 
+            "name": "new",
             "description": "creates a new branch; sets it up for remote\n\t\t\ttracking, ie 'set-upstream'"
         },
         {
-            "name": "feature", 
-            "description": "creates a new feature branch of of the current branch"
+            "name": "feature",
+            "description": "creates a new feature branch off of the current branch"
         },
         {
-            "name": "remove", 
+            "name": "remove",
             "description": "removes/deletes both local and remote branch.\n\t\t\tIf you want to remove local only or remove remote only,\n\t\t\tyou can use:\n\nlocal:\t\t'true' or 't', remove local only\nremote:\t\t'true' or 't', remove remote only\nl:\t\tshorthand for 'local'\nr:\t\tshorthand for 'remote'\n\n"
-        }, 
+        },
         {
-            "name": "diff", 
+            "name": "diff",
             "description": "gives you a selectable list of changed files; \n\t\t\topens selected file in your difftool \n\t\t\tspecified inside the profile.py file"
-        }, 
+        },
         {
-            "name": "re", 
+            "name": "re",
             "description": "restores version found in origin/master.  It runs \n\t\t\t'git restore --source origin/master -- filepath'.\n\t\t\tAvailable options: \n\nfile: \t\tspecify by file name, such as 'qit re file:someFile.txt'\npath:\t\tspecify by path\nprofile: \t'true', you can also do a batch of files: add the key 'restore'\n\t\tto your profile file.  Then, the 'restore' value will\n\t\tbe a list element, including all of the files that you\n\t\twould like to restore\n"
-        }, 
+        },
         {
-            "name": "reback", 
+            "name": "reback",
             "description": "restores version of file from last commit in current\n\t\t\tbranch"
-        }, 
+        },
         {
-            "name": "status", 
+            "name": "status",
             "description": "same as git status, but more fun!"
-        }, 
+        },
         {
-            "name": "back", 
+            "name": "back",
             "description": "go back to the previously checked out branch"
         }
     ]
